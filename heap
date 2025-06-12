@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void bottomup (vector<int>& h){
+    for (int a = h.size()/2-1; a >= 0; a--){
+        int k = a;
+        int v = h[k];
+        bool pulo = false;
+        while (!pulo && 2*k+1 < h.size()){
+            int j = 2*k+1;
+            if (j < h.size()){
+                if ( j+1 < h.size() && h[j] < h[j+1]){
+                    j++;
+                }
+            }    
+            if (v >= h[j]){
+                pulo = true;
+            }
+            else{
+                h[k] = h[j];
+                k = j;
+            }    
+        }
+        h[k] = v;
+    }
+};
+
+int main(){
+    vector<int> heap = {2,9,7,6,5,8,10};
+    bottomup(heap);
+    cout << "ka";
+    cout << "ka";
+
+
+}
